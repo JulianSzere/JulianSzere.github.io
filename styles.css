@@ -1,0 +1,13 @@
+body {
+    width: 100%;
+
+  }
+
+  p {
+    text-align: justify;
+    text-justify: inter-word;
+    margin: 0 auto;
+    width: 50%;
+    font-size: x-large
+  }
+  
