@@ -1,4 +1,4 @@
-const variables = [
+const textVariables = [
     ['Todo'], 
     ['estará', 'se hallará', 'permanecerá', 'se quedará', 'se encontrará', 'habitará', 'se ubicará', 'radicará', 'existirá', 'vivirá'], 
     ['en', 'por'], 
@@ -115,8 +115,8 @@ const variables = [
     ['mil'], 
     ['años'], 
     ['nada'], 
-    ['querrán', 'podrán'], 
-    ['decir,'], 
+    ['querrán', 'podrán', 'lograrán', 'conseguirán', 'serán capaz de'], 
+    ['decir,', 'expresar'], 
     ['el'], 
     ['evangelio'], 
     ['gnóstico'], 
@@ -135,10 +135,10 @@ const variables = [
     ['la'], 
     ['Biblioteca,'], 
     ['la'], 
-    ['demostración', 'prueba'], 
+    ['demostración', 'prueba', 'razón', 'justificación'], 
     ['de'], 
     ['la'], 
-    ['falacia', 'imposibilidad', 'falsedad'], 
+    ['falacia', 'imposibilidad', 'falsedad', 'inexactitud'], 
     ['de'], 
     ['ese', 'aquel'], 
     ['catálogo.', 'índice.'], 
@@ -146,19 +146,19 @@ const variables = [
     ['pero', 'mas', 'aunque'], 
     ['por', 'para'], 
     ['una'], 
-    ['línea', 'oración'], 
+    ['línea', 'oración', 'frase'], 
     ['razonable', 'prudente', 'suficiente'], 
     ['o'], 
     ['una'], 
-    ['justa'], 
+    ['justa', 'simple', 'sencilla', 'inocente'], 
     ['noticia', 'comunicación', 'nota', 'novedad', 'idea'], 
-    ['habrá', 'existirán'], 
+    ['habrá', 'existirán', 'se encontrarán'], 
     ['millones'], 
     ['de'], 
     ['insensatas', 'alocadas', 'locas', 'desatinadas', 'irrazonables', 'ilógicas'], 
-    ['cacofonías,', 'disonancias,', 'discordancias,'], 
+    ['cacofonías,', 'disonancias,', 'discordancias,', 'discrepancias'], 
     ['de'],
-    ['fárragos'], 
+    ['fárragos', 'revoltijos', 'maremagnos'], 
     ['verbales'], 
     ['y'], 
     ['de'], 
@@ -189,27 +189,36 @@ const variables = [
     ['que'], 
     ['habita', 'vive', 'mora', 'anida', 'se asienta', 'existe'], 
     ['el'], 
-    ['caos-', 'desorden-'], 
+    ['caos-', 'desorden-', 'desconcierto-'], 
     ['les'], 
     ['hayan'], 
     ['otorgado', 'regalado', 'donado', 'cedido', 'concedido', 'consentido', 'dispensado'], 
     ['una'], 
     ['página', 'hoja'], 
     ['tolerable.', 'soportable.', 'leible.']
-]
+];
 
+const titleVariables = [
+    ['La'],
+    ['biblioteca'],
+    ['total', 'completa', 'integral', 'entera', 'cabal', 'general', 'universal', 'absoluta', 'exhaustiva', 'global']
+];
 
-let text = ''
-let combinations = 1
-for (let i = 0; i < variables.length; i++) {
-    let variable = variables[i];
-    combinations = combinations * variable.length
-    let word = variable[Math.floor(Math.random() * variable.length)];
-    text += ' ' + word
+function newCombination(synonyms) {
+    let text = '';
+    for (let i = 0; i < synonyms.length; i++) {
+        let synonym = synonyms[i];
+        let word = synonym[Math.floor(Math.random() * synonym.length)];
+        text += ' ' + word;
+    }
+    return text;
 }
 
-const element = document.createElement('p');
-element.innerHTML = text
-document.body.appendChild(element);
+const textElement = document.createElement('p');
+const titleElement = document.createElement('h1');
 
-console.log(combinations)
+textElement.innerHTML = newCombination(textVariables);
+titleElement.innerHTML = newCombination(titleVariables);
+
+document.body.appendChild(titleElement);
+document.body.appendChild(textElement);
